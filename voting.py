@@ -1,21 +1,25 @@
 import time
-import csv 
+import csv
 
-
-with open("Sample Electoral Roll 2022.csv") as file:
-    reader = csv.DictReader(file)
-    Sname = input("what is your Surname? ")
-    for row in reader:
-        if row['Surname'] != Sname:
-            print("your ugly ass is missing baka")
-            break
-        if row['Surname'] == Sname:
-            print("we found your ugly ass")
-            break
 print("Welcome to today's election votes")
 time.sleep(1)
 print("Please fill in your credentials for verification ")
 time.sleep(1)
-FirstName = input("what is your First name? ")
-MiddleName = input("what is your Middle name? ")
-LastName = input("what is your Last name? ")
+
+with open("Sample Electoral Roll 2022.csv") as file:
+    reader = csv.DictReader(file)
+    Fname = input("what is your First Name? ")
+    Sname = input("What is your Surname? ")
+    Mname = input("What is your Middle Name? ")
+
+    for row in reader:
+        if row['First Name'] != Fname:
+            print("your cridentials isnt reistered or you've inputting your First Name incorrectly")
+            break
+        if row['Surname'] != Sname:
+            print("your cridentials isnt reistered or you've inputting your Surname Name incorrectly")
+            break
+        if row['Middle Name'] != Mname:
+            print("your cridentials isnt reistered or you've inputting your Middle Name incorrectly")
+            break
+
