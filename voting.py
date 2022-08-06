@@ -16,10 +16,3 @@ with open("Sample Electoral Roll 2022.csv") as file:
         if row['First Name'] != Fname:
             print("your cridentials isnt reistered or you've inputting your First Name incorrectly")
             break
-        if row['Surname'] != Sname:
-            print("your cridentials isnt reistered or you've inputting your Surname Name incorrectly")
-            break
-        if row['Middle Name'] != Mname:
-            print("your cridentials isnt reistered or you've inputting your Middle Name incorrectly")
-            break
-
