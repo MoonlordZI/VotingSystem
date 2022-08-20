@@ -57,6 +57,19 @@ def CheckName():
         exit()
 CheckName()
 
+def eligibility():
+
+    time.sleep(1)
+    print("Checking Voting Eligibility...")
+    time.sleep(1)
+    pos = df.loc[df['First Name'].isin([FirstName])]['Has Voted?'].iat[0] #retrieves value of 'Has Voted' collumn corresponding to the First Name
+    if pos == "No": #Checks if the 'Has Voted' collumn says No 
+        print("You are Eligible")
+    else:
+        print("You have already voted")
+        exit()
+eligibility()
+
 def CheckAddress():
 #asks input of addresses 
     HouseNum = int(input("What is your house number? "))
@@ -76,19 +89,6 @@ def CheckAddress():
         print("Invalid Address")
         exit()
 CheckAddress()
-
-def eligibility():
-
-    time.sleep(1)
-    print("Checking Voting Eligibility...")
-    time.sleep(1)
-    pos = df.loc[df['First Name'].isin([FirstName])]['Has Voted?'].iat[0] #retrieves value of 'Has Voted' collumn corresponding to the First Name
-    if pos == "No": #Checks if the 'Has Voted' collumn says No 
-        print("You are Eligible")
-    else:
-        print("You have already voted")
-eligibility()
-
 
 def ID():
     LOne = random.choice(string.ascii_letters) #LOne is assigned a random letter 
@@ -126,3 +126,10 @@ def Voting():
     vb.to_csv('Voting bal.csv', index = False) #updates the voting bal csv file, index false means it wont add the collumnn that lables the rows
 
 Voting()
+
+def UpdateVote():
+    position = df.loc[df['First Name'].isin([FirstName])]['IDNum'].iat[0] #positions is allocated the IDNum corresponding to the First Name
+    positionUpdate = position - 1 #ID Num begins with a 1 however the program starts the csv with 0 
+    df.loc[int(positionUpdate), 'Has Voted?'] = "Yes" #updates the Has Vote collumn to Yes corresponding to the user
+    df.to_csv("Sample Electoral Roll 2022.csv", Index = False) #updates the csv file
+UpdateVote()
