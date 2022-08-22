@@ -108,7 +108,7 @@ def Voting():
     print("Here are the Candidates")
     time.sleep(1)
     print('--------')
-    print(vb) #displays the voting bal csv
+    print(vb['Candidates']) #displays the voting bal csv
     print('--------')
 
     print('Starting numbering candidates')
@@ -131,5 +131,5 @@ def UpdateVote():
     position = df.loc[df['First Name'].isin([FirstName])]['IDNum'].iat[0] #positions is allocated the IDNum corresponding to the First Name
     positionUpdate = position - 1 #ID Num begins with a 1 however the program starts the csv with 0 
     df.loc[int(positionUpdate), 'Has Voted?'] = "Yes" #updates the Has Vote collumn to Yes corresponding to the user
-    df.to_csv("Sample Electoral Roll 2022.csv", Index = False) #updates the csv file
+    df.to_csv("Sample Electoral Roll 2022.csv", index = False) #updates the csv file
 UpdateVote()
